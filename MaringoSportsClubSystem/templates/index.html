@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="module">
+        import { ClubMember, ClubCommerceStore, SportsClub } from '../static/scripts/maringo_sports_club_my_approach.js'
+        // Create a ClubMember instance
+        const member1 = new ClubMember('John Doe', 'Male', 'Dad', '2000', '0789123456', 'South', false, 'football,basketball', 170, 5.9, { accountBalance: 1500000 }, true);
+        const member2 = new ClubMember('Shakers', 'Male', 'Dad', '1999', '0789123456', 'South', true, 'football,volleyball, basketball', 170, 5.9, { accountBalance: 150000 }, false);
+        const member3 = new ClubMember('Jane', 'Female', 'mom', '2011', '0789123456', 'North', false, 'football,basketball, dart', 170, 5.9, { accountBalance: 100000 }, false);
+        const member4 = new ClubMember('Shakers', 'Female', 'mom', '2005', '0789123456', 'West', true, 'football,netball, basketball', 170, 5.9, { accountBalance: 190000 }, true);
+
+        // Create a ClubCommerceStore instance
+        const store = new ClubCommerceStore([{ Bloomers: 2500, Gamer_shorts: 7500, Hockey_sticks: 500, Socks: 3000, Track_suits: 700, T_shirts: 10000, Wrapper: 500}]);
+
+        // Create a SportsClub instance
+        const sportsClub = new SportsClub();
+
+        // Add the member to the sports club
+        sportsClub.addMember(member1, member2, member3, member4);
+
+        // Display members details
+        console.log('Member Details:');
+        console.log(member1);
+        console.log(member2);
+        console.log(member3);
+        console.log(member4);
+
+        // Calculate and display membership fee
+        console.log('\nMembership Fee:');
+        console.log('Is Group:', member1.isGroup);
+        console.log('Membership Fee:', member1.calculateMembershipFee());
+
+        console.log('Is Group:', member2.isGroup);
+        console.log('Membership Fee:', member2.calculateMembershipFee());
+
+        console.log('Is Group:', member3.isGroup);
+        console.log('Membership Fee:', member3.calculateMembershipFee());
+
+        console.log('Is Group:', member4.isGroup);
+        console.log('Membership Fee:', member4.calculateMembershipFee());
+
+        // Record a transaction for the member
+        const member1_itemsPurchased = [{ name: 'Bloomers', price: 750 }];
+        const member1_transactionResult = store.recordTransaction(member1, member1_itemsPurchased);
+
+        const member2_itemsPurchased = [{ name: 'Gamer_shorts', price: 1000 }];
+        const member2_transactionResult = store.recordTransaction(member2, member2_itemsPurchased);
+
+        const member3_itemsPurchased = [{ name: 'Track_suits', price: 3000 }];
+        const member3_transactionResult = store.recordTransaction(member3, member3_itemsPurchased);
+
+        const member4_itemsPurchased = [{ name: 'T_shirts', price: 1500 }];
+        const member4_transactionResult = store.recordTransaction(member4, member4_itemsPurchased);
+
+        // Display transaction details
+        console.log('\nTransaction Details:');
+        console.log(member1_transactionResult);
+        console.log(member2_transactionResult);
+        console.log(member3_transactionResult);
+        console.log(member4_transactionResult);
+
+        // Add sports to the sports club
+        sportsClub.sports = ['Football', 'Basketball', 'Swimming', 'Hockey', 'Lawn tennis', 'Table tennis', 'Darts', 'Badminton', 'Volleyball', 'Netball', 'Baseball', 'Rugby', 'Pool', 'Chess', 'Draft'];
+
+        // Calculate and display facilitation fee
+        const team1Members = [member1, member2];
+        const team2Members = [member3, member4]
+        const team3Members = [member1, member4, member3]
+        const team4Members = [member1, member2, member3, member4]
+
+        sportsClub.calculateFacilitationFee(team1Members, member1);
+        sportsClub.calculateFacilitationFee(team2Members, member3);
+        sportsClub.calculateFacilitationFee(team3Members, member1);
+        sportsClub.calculateFacilitationFee(team4Members, member1);
+
+        console.log('\nFacilitation Fee:');
+        console.log(sportsClub.facilitationFee);
+
+        // Simulate equipment damage and deduct surcharge from the captain's account
+        sportsClub.handleEquipmentDamage(member1, {name:'Bloomers' });
+        sportsClub.handleEquipmentDamage(member2, {name:'Socks' });
+        sportsClub.handleEquipmentDamage(member3, {name:'Hockey_sticks' });
+        sportsClub.handleEquipmentDamage(member4, {name:'Track_suits' });
+
+        console.log('\nUpdated Captain Account Balance:');
+        console.log(member1.details.accountBalance);
+        console.log(member2.details.accountBalance);
+        console.log(member3.details.accountBalance);
+        console.log(member4.details.accountBalance);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

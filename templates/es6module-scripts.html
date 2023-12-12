@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Js Scripts as modules.</p>
+
+    <script type="module">
+        import {HighSpeedTrain} from '../static/scripts/class_constructors.js';
+        HighSpeedTrain(900, false, 'black', true)
+
+        toggleHighSpeedOn()
+        toggleLights()
+    </script>
+    <script type="module">
+        import {HighSpeedTrain} from '../static/scripts/class_constructors.js';
+        HighSpeedTrain(900, true, 'black', false)
+
+        toggleHighSpeedOn()
+        toggleLights()
+    </script>
+</body>
+</html>

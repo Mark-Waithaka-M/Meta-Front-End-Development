@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var p = document.createElement('p')
+        p.innerText = 'This is an Example of adding an event listener and handling click events'
+
+        var p2 = document.createElement('p')
+        p2.innerText = 'watch out on the text below as you click it several times'
+
+        var h1 = document.createElement('h1')
+        h1.innerText = 'CLICK ME'
+
+        var h2 = document.createElement('h2')
+        h2.innerText = "Type into the input to make this text change"
+
+        var input = document.createElement('input')
+        input.setAttribute('type', 'text')
+
+
+        document.body.innerText = ''
+        document.body.appendChild(p)
+        document.body.appendChild(p2)
+        document.body.appendChild(h1)
+
+        document.body.appendChild(h2);
+        document.body.appendChild(input);
+
+        var h1 = document.querySelector('h1')
+        var arr = ['CLICK ME','First Click','Second Click','Third Click']
+
+        function handleClick(){
+            switch(h1.innerText){
+                case arr[0]:
+                    h1.innerText = arr[1]
+                    break
+
+                case arr[1]:
+                    h1.innerText = arr[2]
+                    break 
+
+                case arr[2]:
+                    h1.innerText = arr[3]
+                    break
+
+                default:
+                    h1.innerText = arr[0]
+            }
+        }
+
+        h1.addEventListener('click', handleClick)
+
+        input.addEventListener('change', function () {
+            h2.innerText = input.value
+        })
+
+    </script>
+</body>
+
+</html>
